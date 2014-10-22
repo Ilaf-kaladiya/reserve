@@ -59,4 +59,3 @@ target/
 venv/*
 local_settings.py
 flights/migrations/*
-static/*
