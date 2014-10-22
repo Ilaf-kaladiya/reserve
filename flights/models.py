@@ -40,37 +40,18 @@ class ItineraryReservation(models.Model):
         ('Business Class', 'Business Class'),
         ('Economy', 'Economy')
     )
+
     reservation_id = models.SmallIntegerField(primary_key=True)
     travel_class = models.CharField(choices=classes, max_length=30)
-    departure_date = models.ForeignKey(FlightSchedule, related_name='departure_date')
+    schedule = models.ForeignKey(FlightSchedule, related_name='departure_date')
     passenger_id = models.ForeignKey(Passenger)
 
     def __unicode__(self):
         return 'Reservation {} traveling {} reserved {}'.format(
             self.reservation_id,
             self.travel_class,
-            self.date_of_reservation
+            self.schedule
         )
 
-
-class Leg(models.Model):
-    flight_number = models.ForeignKey(FlightSchedule, related_name='flight_numbers')
-    origin_airport_code = models.ForeignKey(FlightSchedule, related_name='origin_airport_codes')
-    destination_airport_code = models.ForeignKey(FlightSchedule, related_name='destination_airport_codes')
-
-    def __unicode__(self):
-        return 'flight {} from {} to {}'.format(
-            self.flight_number,
-            self.origin_airport_code,
-            self.destination_airport_code
-        )
-
-
-class Itinerary(models.Model):
-    reservations = models.ForeignKey(ItineraryReservation)
-    legs = models.ForeignKey(Leg)
-
-
-class ItineraryLeg(models.Model):
-    reservation_id = models.ForeignKey(Itinerary, related_name='reservation_id')
-    leg_id = models.ForeignKey(Leg, related_name='leg_ids')
+    class Meta:
+        verbose_name_plural = 'Itinerary Reservations'
