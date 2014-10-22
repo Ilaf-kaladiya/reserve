@@ -5,6 +5,7 @@ from django.contrib import admin
 
 urlpatterns = patterns('',
     url(r'^$', 'flights.views.index', name='index'),
+    url(r'^results/$', 'flights.views.results', name='results'),
     url(r'^admin/', include(admin.site.urls)),
 )
 

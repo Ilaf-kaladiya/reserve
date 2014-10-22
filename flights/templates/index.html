@@ -2,8 +2,10 @@
 {% load staticfiles %}
 
 {% block content %}
+<div id="homeScreen">
+<a href="#" id="getData">Get Flight Data</a>
 <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-6 col-lg-offset-3">
         <div class="well">
             <form class="form-horizontal">
                 <legend>Find a Flight</legend>
@@ -95,10 +97,27 @@
                         </select>
                     </div>
                 </div>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button id="flightSearch" class="btn btn-primary pull-right">Search</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
 </div>
+</div>
+<div class="ajax-pane">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr id="resultHead"></tr>
+        </thead>
+        <tbody id="resultBody">
+
+        </tbody>
+    </table>
+</div>
+
 {% endblock %}
 
 {% block js %}
