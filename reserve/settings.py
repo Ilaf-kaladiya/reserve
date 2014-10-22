@@ -87,17 +87,17 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = 'staticfiles'
 
-STATICFILES_DIRS = [(os.path.join(BASE_DIR, 'static')), ]
+STATICFILES_DIRS = [(os.path.join(BASE_DIR, 'reserve/../flights/static')), ]
 
 TEMPLATE_DIRS = [(os.path.join(BASE_DIR, 'flights/templates')), ]
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'static', *MEDIA_URL.strip('/').split('/'))
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'reserve/../flights/static', *MEDIA_URL.strip('/').split('/'))
 
 # Authentication
 ################
-AUTH_USER_MODEL = 'flights.Profile'
+AUTH_USER_MODEL = 'flights.Passenger'
 
 
 try:
